@@ -10,10 +10,8 @@ module.exports = test => {
     const doneFile = api.path.join(path, 'example.done');
     api.fs.unlinkSync(doneFile);
     app.loadPlaceFile(placeName, path, file, () => {
-      process.nextTick(() => {
-        test.assert(api.fs.existsSync(doneFile));
-        test.end();
-      });
+      test.assert(api.fs.existsSync(doneFile));
+      test.end();
     });
   });
 };
